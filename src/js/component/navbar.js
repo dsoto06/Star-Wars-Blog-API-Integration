@@ -9,15 +9,20 @@ export const Navbar = () => {
 		<div className="d-flex row justify-content-between align-items-center border border-bottom bg-light">
 			<Link to="/">
 				<img
-					className="mx-5 my-3"
+					className="mx-5 my-1"
 					src="https://1000marcas.net/wp-content/uploads/2019/12/Star-Wars-Logo-600x338.png"
 					alt="starWars"
 					width="150"
 					height="70"
 				/>
 			</Link>
+			<div className="text-center">
+				<h1>
+					<i className="fab fa-jedi-order" /> Star Wars Blog <i className="fab fa-jedi-order" />
+				</h1>
+			</div>
 			<Dropdown className="mx-5 my-3">
-				<Dropdown.Toggle variant="success" id="dropdown-basic">
+				<Dropdown.Toggle variant="dark" id="dropdown-basic">
 					Favorites
 				</Dropdown.Toggle>
 
