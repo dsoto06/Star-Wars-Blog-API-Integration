@@ -54,10 +54,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				for (let i = 1; next !== null; i++) {
 					let response = await fetch(link.concat(i.toString()));
-					let newStarShips = await response.json();
-					next = newStarShips.next;
+					let newPlanet = await response.json();
+					next = newPlanet.next;
 
-					newStarShips.results.map((ship, index) => {
+					newPlanet.results.map((ship, index) => {
 						setStore({ planets: [...store.planets, ship] });
 					});
 				}
@@ -69,10 +69,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				for (let i = 1; next !== null; i++) {
 					let response = await fetch(link.concat(i.toString()));
-					let newStarShips = await response.json();
-					next = newStarShips.next;
+					let newPlanet = await response.json();
+					next = newPlanet.next;
 
-					newStarShips.results.map((ship, index) => {
+					newPlanet.results.map((ship, index) => {
 						setStore({ people: [...store.people, ship] });
 					});
 				}
