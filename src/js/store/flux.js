@@ -47,35 +47,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getPlanets: async () => {
-				let next = "";
+				const URL = "https://3000-apricot-cardinal-ws8upp1y.ws-us03.gitpod.io/planets";
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(URL, CONFIG);
+				const json = await response.json();
 
-				const store = getStore();
-				let link = "https://swapi.dev/api/planets/?page=";
-
-				for (let i = 1; next !== null; i++) {
-					let response = await fetch(link.concat(i.toString()));
-					let newPlanet = await response.json();
-					next = newPlanet.next;
-
-					newPlanet.results.map((ship, index) => {
-						setStore({ planets: [...store.planets, ship] });
-					});
-				}
+				console.log("DATA>>", json);
+				setStore({ planets: json });
 			},
 			getCharacter: async () => {
-				let next = "";
-				const store = getStore();
-				let link = "https://swapi.dev/api/people/?page=";
+				const URL = "https://3000-apricot-cardinal-ws8upp1y.ws-us03.gitpod.io/characters";
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(URL, CONFIG);
+				const json = await response.json();
 
-				for (let i = 1; next !== null; i++) {
-					let response = await fetch(link.concat(i.toString()));
-					let newPlanet = await response.json();
-					next = newPlanet.next;
-
-					newPlanet.results.map((ship, index) => {
-						setStore({ people: [...store.people, ship] });
-					});
-				}
+				setStore({ people: json });
 			},
 			setDetails: (name, char1, char2, char3, char4, char5, title1, title2, title3, title4, title5, img) => {
 				setStore({
